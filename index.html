@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link
+      rel="shortcut icon"
+      href="assets/images/pokeapi.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <img src="/assets/images/pokeapi.png" alt="PokéAPI" class="logo" />
+        <div class="brand-copy">
+          <h1 class="brand-title"></h1>
+          <p class="brand-subtitle"></p>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="theme-toggle" class="icon-btn" title="Toggle theme">
+          🌙
+        </button>
+        <button id="compare-btn" class="icon-btn" title="Compare Pokémon">
+          ⚖️
+        </button>
+        <button
+          id="favorites-btn"
+          class="icon-btn favorites-toggle"
+          title="Show favorites"
+          aria-label="Show favorites"
+        >
+          <span class="favorites-toggle-icon">❤️</span>
+          <span id="favorites-count" class="favorites-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Search & Filter Bar -->
+    <section class="controls">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search Pokémon by name..."
+        autocomplete="off"
+      />
+      <select id="type-filter">
+        <option value="">All Types</option>
+      </select>
+    </section>
+
+    <!-- Active filter tags -->
+    <section class="active-filters" id="active-filters"></section>
+
+    <!-- Gallery -->
+    <main id="gallery" class="gallery"></main>
+
+    <!-- Sentinel for infinite scroll -->
+    <div id="scroll-sentinel" class="scroll-sentinel">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Compare Modal -->
+    <div id="compare-modal" class="modal hidden">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content modal-wide">
+        <button class="modal-close" id="compare-modal-close">&times;</button>
+        <h2 class="compare-title">Compare Pokémon</h2>
+        <div class="compare-selectors">
+          <select id="compare-select-1">
+            <option value="">Select Pokémon</option>
+          </select>
+          <span class="vs-text">VS</span>
+          <select id="compare-select-2">
+            <option value="">Select Pokémon</option>
+          </select>
+        </div>
+        <div id="compare-body" class="compare-body"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
